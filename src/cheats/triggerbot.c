@@ -27,9 +27,6 @@ void DoTriggerbot() {
     if (!target)
         return;
 
-    printf("Addr: %p\n", target);
-    return;
-
     if (!target || target->m_iHealth <= 0 || !Utils_IsEnemy(target)) {
         onAttack = false;
         last = 0;

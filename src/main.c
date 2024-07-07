@@ -21,8 +21,8 @@ BYTE oWglSwapBuffersBytes[5];
 
 DWORD WINAPI EjectThread(LPVOID lpParameter) {
     Mem_Patch((BYTE*)oWglSwapBuffers, oWglSwapBuffersBytes, 5);
-    FreeConsole();
-    fclose(fp);
+    // FreeConsole();
+    // fclose(fp);
 
     Sleep(100);
     FreeLibraryAndExitThread(dllModule, 0);
@@ -75,34 +75,12 @@ BOOL __stdcall wglSwapBuffersHook(HDC hDc) {
     return tWglSwapBuffers(hDc);
 }
 
-bool Hook(void* HookAddr, void* tFunc, int len) {
- 
-    if (len < 5) return FALSE;
- 
-    DWORD oldProtection;
-    VirtualProtect(HookAddr, len, PAGE_EXECUTE_READWRITE, &oldProtection);
- 
-    memset(HookAddr, 0x90, len);
- 
-    DWORD rAddr = ((DWORD)tFunc - (DWORD)HookAddr) - 5;
- 
-    *(BYTE*)HookAddr = 0xE9;
- 
-    *(DWORD*)((DWORD)HookAddr + 1) = rAddr;
- 
-    DWORD tProtection;
-    VirtualProtect(HookAddr, len, oldProtection, &tProtection);
- 
-    return TRUE;
- 
-}
-
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
     dllModule = hModule;
 
     if (ul_reason_for_call == DLL_PROCESS_ATTACH) {
-        AllocConsole();
-        freopen_s(&fp, "CONOUT$", "w", stdout);
+        // AllocConsole();
+        // freopen_s(&fp, "CONOUT$", "w", stdout);
 
         oWglSwapBuffers = (wglSwapBuffers_t)GetProcAddress(GetModuleHandle(L"opengl32.dll"), "wglSwapBuffers");
         memcpy(oWglSwapBuffersBytes, (BYTE*)oWglSwapBuffers, 5);

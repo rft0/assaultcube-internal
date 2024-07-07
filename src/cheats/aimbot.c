@@ -5,8 +5,6 @@
 #include "../utils.h"
 #include "../umath.h"
 
-#include <stdio.h>
-
 void DoAimbot() {
     if (!g_bAimbotEnabled) return;
 
