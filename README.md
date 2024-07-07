@@ -1,6 +1,8 @@
 # Assault Cube 1.3.0.2 Internal Cheat
 Assault Cube 1.3.0.2 cheat for windows written in C99, can be injected with any injector.
 
+![assault cube internal cheat](https://github.com/rft0/assaultcube-internal/blob/main/img/ss.png)
+
 ## Customization
 When injected first time program automatically generates `config.json` at `Users\<username>\Documents\AssaultCubeInternal`.
 ```json
