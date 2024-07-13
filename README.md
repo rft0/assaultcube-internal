@@ -35,7 +35,7 @@ Arrays for esp properties represents [R, G, B, A].
 ## Requirements
 * MSVC
 * Clang (Optional)
-* Makefile (Optional)
+* GNU Make (Optional)
 
 ## Disclaimer
 This project is developed for educational purposes only. It is intended to demonstrate and teach various programming techniques, concepts, and methods. The author does not endorse or condone any misuse of the project.
